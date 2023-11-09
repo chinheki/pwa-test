@@ -4,20 +4,30 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter,createBrowserRouter,createRoutesFromElements,Route, RouterProvider} from 'react-router-dom'
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+// root.render(
+//   <React.StrictMode>
+//    <BrowserRouter basename={process.env.PUBLIC_URL}>
+//      <App />
+//    </BrowserRouter>
+//   </React.StrictMode>
+// );
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+    </Route>
+  )
+);
 root.render(
   <React.StrictMode>
-   <BrowserRouter basename={process.env.PUBLIC_URL}>
-     <App />
-   </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
-
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
