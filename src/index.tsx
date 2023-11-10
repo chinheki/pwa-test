@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,createBrowserRouter,createRoutesFromElements,Route, RouterProvider} from 'react-router-dom'
+import Good from './pages/Good';
 
 
 const root = ReactDOM.createRoot(
@@ -17,12 +18,26 @@ const root = ReactDOM.createRoot(
 //    </BrowserRouter>
 //   </React.StrictMode>
 // );
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<App />}>
-    </Route>
-  )
-);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "good",
+        element: <Good />,
+        // loader: goodLoader,
+      },
+    ],
+  },
+]);
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <Route path="/" element={<App />}>
+//     <Route path="/good" element={<Good />} />
+//     </Route>
+//   )
+// );
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
