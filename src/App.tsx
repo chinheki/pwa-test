@@ -1,29 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Link } from 'react-router-dom';
-
+// import './App.css';
+import { Link, Outlet } from "react-router-dom";
+import UseMyEquipments from "./utils/use-my-equipments";
+import UseMyEquipmentsContents, {
+  UpdateMyEquipmentsContext,
+} from "./utils/use-my-equipments-contents";
 function App() {
+  const { myEquipments, updateMyEquipments } =UseMyEquipments()
   return (
     <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="/good"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Goods
-        </a>
-        <Link
-          className="App-link"
-          to="good"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Goods
-        </Link>
-      </header>
+      <UseMyEquipmentsContents.Provider value={myEquipments}>
+        <UpdateMyEquipmentsContext.Provider value={updateMyEquipments}>
+          <header className="App-header">
+            <Link className="App-link" to="/">
+              Home
+            </Link>
+            <Link className="App-link" to="good">
+              Goods
+            </Link>
+          </header>
+          <Outlet />
+        </UpdateMyEquipmentsContext.Provider>
+      </UseMyEquipmentsContents.Provider>
     </div>
   );
 }

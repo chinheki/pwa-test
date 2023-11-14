@@ -4,20 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter,createBrowserRouter,createRoutesFromElements,Route, RouterProvider} from 'react-router-dom'
-import Good from './pages/Good';
-
-
+import {createBrowserRouter,RouterProvider} from 'react-router-dom'
+import Good from './pages/goods/Good';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-// root.render(
-//   <React.StrictMode>
-//    <BrowserRouter basename={process.env.PUBLIC_URL}>
-//      <App />
-//    </BrowserRouter>
-//   </React.StrictMode>
-// );
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,14 +22,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
-// const router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route path="/" element={<App />}>
-//     <Route path="/good" element={<Good />} />
-//     </Route>
-//   )
-// );
+],{
+  basename:process.env.PUBLIC_URL
+});
+
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />

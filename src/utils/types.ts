@@ -1,14 +1,22 @@
-export interface Good{
+export interface Equipment{
     id:string;
     name:string;
-    type:GoodType;
+    type:string;
     amount:number;
     memo:string;
 }
+export const EquipmentType={
+    TENT:'tent',CHAIR:'chair',TABLE:'table',CONTAINER:'container',COOK:'cook',FIRE:'fire'
+}
+export const initEquipment:Equipment={
+id:'',
+name:'',
+type:EquipmentType.TENT,
+amount:1,
+memo:''
+}
+export interface MyEquipments{
+    equipmentList:Equipment[]
+}
 
-export enum GoodType{
-TENT,CHAIR,TABLE,CONTAINER,COOK,FIRE
-}
-export interface MyGoods{
-    goods:Good[]
-}
+export interface FormError{[key:string]:string}
